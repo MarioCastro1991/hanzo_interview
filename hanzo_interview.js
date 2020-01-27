@@ -40,7 +40,7 @@ context('Hanzo interview',()=>{
         
   })      
 
-  it('Send and edit a direct message to test user 1',()=>{
+  it('Send and edit a direct message to test_user1',()=>{
       cy.visit('https://app.slack.com/client/TSTRA82RF/DSSGYE9V1') // Goes to the conversation with "test_user1"
       cy.url().should('contain', 'https://app.slack.com/client/TSTRA82RF/DSSGYE9V1') // Verify that it goes to the right page
       cy.get('#undefined > p', { timeout: 10000 }).type('Hello!{enter}') // Type the message "Hello!"
@@ -48,8 +48,9 @@ context('Hanzo interview',()=>{
       cy.wait(4000)  
       cy.get('div.p-rich_text_section')
         .trigger('mouseover') // Moves the mouse over the message
-        
+
       cy.wait(3000)  
+
       cy.get('div.c-message_actions__container.c-message__actions > button:nth-of-type(5) > i.c-icon.c-icon--vertical-ellipsis')
         .invoke('show')
         .click() // Click the "..." button to open the options
