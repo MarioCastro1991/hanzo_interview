@@ -1,12 +1,13 @@
 context('Hanzo interview',()=>{
     beforeEach(function () { // Does the sign in before each test case
-    cy.visit('https://slack.com/signin') // Goes to the webpage   
+    cy.visit('https://slack.com/signin') // Goes to the sign in page   
     cy.get('#domain').type('hanzogrupo') //Type the name of the workspace
     cy.get('#submit_team_domain').click() // Click the button to Continue
     cy.get('#email').type('mariosilvaecastro@gmail.com') // Type the e-mail
     cy.get('#password').type('Abc123') // Type the password
     cy.get('#signin_btn').click() // Click the Sign in button
   })
+
   it('Create message and see that eveybody can see',()=>{
       cy.visit('https://app.slack.com/client/TSTRA82RF/CT41RNG3F') // Goes to the general group
       cy.url().should('contain', 'https://app.slack.com/client/TSTRA82RF/CT41RNG3F') // Verify that it goes to the right page
@@ -16,13 +17,12 @@ context('Hanzo interview',()=>{
         .click() // Click the button to go to the members section
 
       cy.get('div.p-channel_details_section.p-channel_details__members_list_section > button.c-button-unstyled.p-channel_details_section__header > span.p-channel_details_section__title > span.p-channel_details_section__title-content')
-        .should('have.text', '3 members') // Verify that all 5 the members are in the conversation so that they can see the message 
+        .should('have.text', '5 members') // Verify that all 5 the members are in the conversation so that they can see the message 
   })      
     
   it('Delete message and makes sure nobody can see it',()=>{
       cy.visit('https://app.slack.com/client/TSTRA82RF/CT41RNG3F') // Goes to the general group
       cy.url().should('contain', 'https://app.slack.com/client/TSTRA82RF/CT41RNG3F') // Verify that it goes to the right page
-      //cy.wait(4000)  
       cy.get('div.c-message_kit__background.p-message_pane_message__message.c-message_kit__message.p-message_pane_message__message--last > div > div.c-message_kit__actions.c-message_kit__actions--default > div.c-message_kit__gutter > div.c-message_kit__gutter__right')
         .trigger('mouseover') // Moves the mouse over the message
       cy.wait(3000)  
@@ -35,13 +35,12 @@ context('Hanzo interview',()=>{
       cy.get('button.c-button.c-button--danger.c-button--medium.c-dialog__go.null--danger.null--medium')
         .click() // Click in the button to confirm the deleting of the message
 
-      cy.get('div.p-rich_text_section')
-        .should('not.exist') // Verify that the message does not exist anymore
+      cy.get('div.p-rich_text_section').should('not.exist') // Verify that the message does not exist anymore
         
   })      
 
   it('Send and edit a direct message to test user 1',()=>{
-      cy.visit('https://app.slack.com/client/TSTRA82RF/DSSGYE9V1') // Goes to the conversation with test user 1
+      cy.visit('https://app.slack.com/client/TSTRA82RF/DSSGYE9V1') // Goes to the conversation with "test_user1"
       cy.url().should('contain', 'https://app.slack.com/client/TSTRA82RF/DSSGYE9V1') // Verify that it goes to the right page
       cy.get('#undefined > p', { timeout: 10000 }).type('Hello!{enter}') // Type the message "Hello!"
       cy.get('div.p-rich_text_section').should('have.text','Hello!') // Verify that the message "Hello!" was posted
