@@ -46,40 +46,28 @@ context('Hanzo interview',()=>{
         .trigger('mouseover') // Moves the mouse over the message
 
       cy.wait(3000)  
-
       cy.get('div.c-message_actions__container.c-message__actions > button:nth-of-type(5) > i.c-icon.c-icon--vertical-ellipsis')
         .invoke('show')
         .click() // Click the "..." button to open the options
-      
       cy.get('button.c-button-unstyled.p-message_actions_menu__edit_message.c-menu_item__button > div.c-menu_item__label')
         .click() // Click to edit the message
-
       cy.get('div.c-message__editor__input.c-texty_input--multi_line.c-texty_input.ql-container.c-texty_input--sticky_composer > div.ql-editor > p', { timeout: 10000 })
         .type('{backspace}{backspace}{backspace}{backspace}{backspace}ow are you doing?') // Edit the message
-
       cy.get('button.c-button.c-button--primary.c-button--small.c-message__editor__save.null--primary.null--small')
         .click() // Save the changes
-
       cy.get('div.p-rich_text_section').contains('How are you doing?') // Verify that message was correctly posted
-
       cy.get('div.p-classic_nav__model__buttons.p-classic_nav__no_drag > button:nth-of-type(2)')
         .click() // Goes to the members section
-
       cy.get('span.c-unified_member__secondary-name.c-unified_member__secondary-name--large')
         .should('have.text', 'test_user1') // Verify that the test_user1 is member of the conversation
-
       cy.get('div.c-message_kit__gutter__right')
         .trigger('mouseover') // Moves the mouse over the message
-            
       cy.get('div.c-message_actions__container.c-message__actions > button:nth-of-type(5) > i.c-icon.c-icon--vertical-ellipsis', { timeout: 10000 })
         .click()  // Click the "..." button to open the options
-
       cy.get('button.c-button-unstyled.p-message_actions_menu__delete_message.c-menu_item__button.c-menu_item__button--danger > div.c-menu_item__label')
         .click()  // Click in the button to delete the message
-
       cy.get('button.c-button.c-button--danger.c-button--medium.c-dialog__go.null--danger.null--medium')
         .click() // Click in the button to confirm that we want to delete the message
-
       cy.get('div.p-rich_text_section')
         .should('not.exist')  // Confirm that the message does not exist anymore
 
