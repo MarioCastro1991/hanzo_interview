@@ -16,7 +16,6 @@ context('Hanzo interview',()=>{
       cy.get('div.p-rich_text_section', { timeout: 10000 }).should('have.text','Test!') // Verify that the message was posted
       cy.get('button.c-button-unstyled.p-classic_nav__model__title__info__members')
         .click() // Click the button to go to the members section
-
       cy.get('div.p-channel_details_section.p-channel_details__members_list_section > button.c-button-unstyled.p-channel_details_section__header > span.p-channel_details_section__title > span.p-channel_details_section__title-content')
         .should('have.text', '5 members') // Verify that all 5 the members are in the conversation so that they can see the message 
   })      
@@ -28,14 +27,11 @@ context('Hanzo interview',()=>{
         .trigger('mouseover') // Moves the mouse over the message
       cy.wait(3000)  
       cy.get('div.c-message_actions__container.c-message__actions > button:nth-of-type(5) > i.c-icon.c-icon--vertical-ellipsis')
-        .click() // Click the "..." button to open the options
-      
+        .click() // Click the "..." button to open the options     
       cy.get('button.c-button-unstyled.p-message_actions_menu__delete_message.c-menu_item__button.c-menu_item__button--danger > div.c-menu_item__label')
         .click() // Click to delete message
-
       cy.get('button.c-button.c-button--danger.c-button--medium.c-dialog__go.null--danger.null--medium')
         .click() // Click at the button to confirm the deleting of the message
-
       cy.get('div.p-rich_text_section').should('not.exist') // Verify that the message does not exist anymore
         
   })      
