@@ -1,7 +1,7 @@
 context('Hanzo interview',()=>{
-    beforeEach(function () { // Does the sign in before each test case
+    beforeEach(function () { // Does the sign in before running each test
     cy.visit('https://slack.com/signin') // Goes to the sign in page   
-    cy.get('#domain').type('hanzogrupo') //Type the name of the workspace
+    cy.get('#domain').type('hanzogrupo') // Type the name of the workspace
     cy.get('#submit_team_domain').click() // Click the button to Continue
     cy.get('#email').type('mariosilvaecastro@gmail.com') // Type the e-mail
     cy.get('#password').type('Abc123') // Type the password
