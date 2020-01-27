@@ -1,7 +1,7 @@
 # hanzo_interview
-SDET interview (Hanzo)
+Test cases developed using Cypress for the SDET interview at Hanzo.
 
-cypress.json: this file was modified because Cypress works from within the browser, cypress must be able 
+cypress.json: this file was modified because Cypress works from within the browser and it must be able 
 to directly communicate with your remote application at all times. Unfortunately, 
 browsers naturally try to prevent Cypress from doing this. 
 Info from https://docs.cypress.io/guides/guides/web-security.html#Limitations.
