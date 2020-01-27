@@ -48,6 +48,7 @@ context('Hanzo interview',()=>{
       cy.wait(4000)  
       cy.get('div.p-rich_text_section')
         .trigger('mouseover') // Moves the mouse over the message
+        
       cy.wait(3000)  
       cy.get('div.c-message_actions__container.c-message__actions > button:nth-of-type(5) > i.c-icon.c-icon--vertical-ellipsis')
         .invoke('show')
