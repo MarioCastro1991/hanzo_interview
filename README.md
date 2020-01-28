@@ -1,7 +1,7 @@
 # hanzo_interview
 Test cases developed using Cypress for the SDET interview at Hanzo.
 
-hanzo_interview.js: this files contains the automated test cases using cypress.
+hanzo_interview.js: this file contains the automated test cases using cypress.
 
 cypress.json: this file was modified because Cypress works from within the browser and it must be able 
 to directly communicate with your remote application at all times. Unfortunately, 
